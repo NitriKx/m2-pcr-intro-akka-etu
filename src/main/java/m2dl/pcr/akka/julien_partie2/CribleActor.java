@@ -30,15 +30,13 @@ public class CribleActor extends UntypedActor {
     public void onReceive(Object o) throws Exception {
         if(o instanceof Integer) {
             int nb = (Integer) o;
-            int test = nb%diviseur;
             if(nb%diviseur != 0) {
-
                 // Creer un nouvelle acteur si besoin
                 if(cribleSuivant == null) {
+                    log.info("Découverte d'un nouveau nombre premier : "+nb);
                     cribleSuivant = getContext().actorOf(Props.create(CribleActor.class, nb), "crible-"+nb);
                 }
                 cribleSuivant.tell(nb, getSelf());
-                log.info("Découverte d'un nouveau nombre premier : "+nb);
             }
         } else {
             unhandled(o);

@@ -25,7 +25,7 @@ public class System {
 
         int i = 2;
 
-        while(i < Integer.MAX_VALUE) {
+        while(i < 100) {
             actorRef.tell(i ,null);
             i++;
             Thread.sleep(100);
