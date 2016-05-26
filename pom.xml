@@ -65,7 +65,7 @@
                            <appendAssemblyId>false</appendAssemblyId>
                            <archive>
                                <manifest>
-                                   <mainClass>m2dl.pcr.akka.partie3.CryptageProviderVMEntryPoint</mainClass>
+                                   <mainClass>m2dl.pcr.akka.partie4.CryptageProviderVMEntryPoint</mainClass>
                                </manifest>
                            </archive>
                            <descriptorRefs>
@@ -84,7 +84,7 @@
                            <appendAssemblyId>false</appendAssemblyId>
                            <archive>
                                <manifest>
-                                   <mainClass>m2dl.pcr.akka.partie3.ErreurControleProviderVMEntryPoint</mainClass>
+                                   <mainClass>m2dl.pcr.akka.partie4.ErreurControleProviderVMEntryPoint</mainClass>
                                </manifest>
                            </archive>
                            <descriptorRefs>
@@ -103,7 +103,7 @@
                            <appendAssemblyId>false</appendAssemblyId>
                            <archive>
                                <manifest>
-                                   <mainClass>m2dl.pcr.akka.partie3.Partie3ScenarioEntryPoint</mainClass>
+                                   <mainClass>m2dl.pcr.akka.partie4.Partie3ScenarioEntryPoint</mainClass>
                                </manifest>
                            </archive>
                            <descriptorRefs>

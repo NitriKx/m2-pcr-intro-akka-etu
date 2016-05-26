@@ -1,4 +1,4 @@
-package m2dl.pcr.akka.partie3;
+package m2dl.pcr.akka.partie4;
 
 /**
  * Created by Benoît Sauvère on 26/05/2016.
@@ -6,6 +6,8 @@ package m2dl.pcr.akka.partie3;
 public class Partie3ScenarioEntryPoint {
 
     public static void main(String[] args) {
+
+
 
     }
 }
