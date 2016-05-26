@@ -25,10 +25,9 @@ public class System {
         for (int i = 3; i <= MAX; i++) {
             actorRef.tell(""+i,null);
         }
+
         Thread.sleep(1000);
 
-        log.debug("Actor System Shutdown Starting...");
-
-        actorSystem.terminate();
+        actorRef.tell("stop",null);
     }
 }
