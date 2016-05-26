@@ -1,7 +1,35 @@
 package m2dl.pcr.akka.partie3;
 
+import akka.actor.ActorRef;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
+import m2dl.pcr.akka.stringservices.StringUtils;
+
 /**
  * Created by julien on 26/05/16.
  */
-public class ErreurControlProviderActor {
+public class ErreurControlProviderActor extends UntypedActor {
+
+    LoggingAdapter log = Logging.getLogger(getContext().system(), ErreurControlProviderActor.class);
+
+    public ErastospeneTesterActor() {
+    }
+
+
+    @Override
+    public void onReceive(Object msg) throws Exception {
+        if (msg instanceof Message) {
+            Message message = (Message) msg;
+            String messageSansCtrl = StringUtils.verifieCtrl(message.getMessage());
+            if (messageSansCtrl != null) {
+                message.getActorRef().tell(msg,getSelf());
+            } else {
+                log.error("Le message ne contient pas de ctrl");
+            }
+        } else {
+            unhandled(msg);
+        }
+    }
 }
