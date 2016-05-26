@@ -21,7 +21,7 @@ public class CryptageProviderActor extends UntypedActor {
         // Cas d'utilisation 1
         if (msg instanceof Message) {
             Message msgMessage = (Message)msg;
-            msgMessage.getActorRef().tell(StringUtils.crypte(msgMessage.getMessage()), getSelf());
+            msgMessage.getRecepteur().tell(StringUtils.crypte(msgMessage.getMessage()), getSelf());
         }
         // Cas d'utilisation 3
         if (msg instanceof String) {
