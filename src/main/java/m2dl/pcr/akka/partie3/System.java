@@ -22,22 +22,14 @@ public class System {
 
         Thread.sleep(5000);
 
-        final ActorRef actorRef = actorSystem.actorOf(Props.create(CribleActor.class, 2), "crible-2");
+        final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class, 2), "Cryptage");
+        final ActorRef erreurControle = actorSystem.actorOf(Props.create(ErreurControlProviderActor.class, 2), "ErreurControle");
 
-        int i = 2;
+        // Cas d'utilisation 1
 
-        while(i < 100) {
-            actorRef.tell(i ,null);
-            i++;
-            Thread.sleep(100);
-        }
-
-        log.info("Envoi de stop en chaine");
-        actorRef.tell("KILL" ,null);
 
 
         log.debug("Actor System Shutdown Starting...");
-        actorRef.tell(PoisonPill.getInstance(), null);
         actorSystem.terminate();
     }
 }
