@@ -22,12 +22,20 @@ public class System {
 
         Thread.sleep(5000);
 
-        final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class, 2), "Cryptage");
-        final ActorRef erreurControle = actorSystem.actorOf(Props.create(ErreurControlProviderActor.class, 2), "ErreurControle");
+        final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class), "Cryptage");
+        final ActorRef erreurControle = actorSystem.actorOf(Props.create(ErreurControlProviderActor.class), "ErreurControle");
+        final ActorRef recepteur = actorSystem.actorOf(Props.create(RecepteurActor.class), "Recepteur");
+
+
 
         // Cas d'utilisation 1
 
 
+
+        // Cas d'utilisation 2
+
+
+        // Cas d'utilisation 3
 
         log.debug("Actor System Shutdown Starting...");
         actorSystem.terminate();
