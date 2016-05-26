@@ -14,7 +14,7 @@ public class ErreurControlProviderActor extends UntypedActor {
 
     LoggingAdapter log = Logging.getLogger(getContext().system(), ErreurControlProviderActor.class);
 
-    public ErastospeneTesterActor() {
+    public ErreurControlProviderActor() {
     }
 
 
@@ -24,7 +24,7 @@ public class ErreurControlProviderActor extends UntypedActor {
             Message message = (Message) msg;
             String messageSansCtrl = StringUtils.verifieCtrl(message.getMessage());
             if (messageSansCtrl != null) {
-                message.getActorRef().tell(msg,getSelf());
+                message.getRecepteur().tell(msg, getSelf());
             } else {
                 log.error("Le message ne contient pas de ctrl");
             }
