@@ -1,4 +1,4 @@
-package m2dl.pcr.akka.exercice1point2;
+package m2dl.pcr.akka.julien_exercice1point2;
 
 import akka.actor.ActorRef;
 import akka.actor.Props;

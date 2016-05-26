@@ -1,9 +1,8 @@
-package m2dl.pcr.akka.exercice1point2;
+package m2dl.pcr.akka.julien_exercice1point2;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import m2dl.pcr.akka.helloworld1.SimpleHelloWorldActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
