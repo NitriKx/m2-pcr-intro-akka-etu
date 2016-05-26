@@ -1,7 +1,7 @@
-package m2dl.pcr.akka.actors
+package m2dl.pcr.akka.Part2.actors
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
-import m2dl.pcr.akka.actors.NodeActor.StopConfirm
+import m2dl.pcr.akka.Part2.actors.NodeActor.StopConfirm
 
 /**
   * Created by Abel on 26/05/16.

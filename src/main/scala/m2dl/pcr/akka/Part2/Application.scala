@@ -1,11 +1,11 @@
-package m2dl.pcr.akka
+package m2dl.pcr.akka.Part2
 
 import java.util.concurrent.TimeUnit
 
 import akka.actor.{ActorSystem, Props}
-import m2dl.pcr.akka.actors.NodeActor
 import akka.pattern.ask
 import akka.util.Timeout
+import m2dl.pcr.akka.Part2.actors.NodeActor
 
 import scala.concurrent.duration.FiniteDuration
 
