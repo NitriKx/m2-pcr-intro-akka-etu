@@ -39,8 +39,8 @@ public class ComposerActor extends UntypedActor {
     Procedure<Object> controller = new Procedure<Object>() {
         public void apply(Object msg) throws Exception {
             if (msg instanceof Message) {
-                erreur.tell(msg,getSelf());
                 ((Message) msg).setRecepteur(getSelf());
+                erreur.tell(msg, getSelf());
                 getContext().become(envoyer, false);
             } else {
                 unhandled(msg);
