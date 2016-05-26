@@ -103,7 +103,7 @@
                            <appendAssemblyId>false</appendAssemblyId>
                            <archive>
                                <manifest>
-                                   <mainClass>m2dl.pcr.akka.partie4.Partie3ScenarioEntryPoint</mainClass>
+                                   <mainClass>m2dl.pcr.akka.partie4.Partie4ScenarioEntryPoint</mainClass>
                                </manifest>
                            </archive>
                            <descriptorRefs>
