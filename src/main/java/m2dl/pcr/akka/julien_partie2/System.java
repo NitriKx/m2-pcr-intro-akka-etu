@@ -2,6 +2,7 @@ package m2dl.pcr.akka.julien_partie2;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.PoisonPill;
 import akka.actor.Props;
 import m2dl.pcr.akka.julien_exercice1point2.ParentActor;
 import org.slf4j.Logger;
@@ -31,7 +32,12 @@ public class System {
             Thread.sleep(100);
         }
 
+        log.info("Envoi de stop en chaine");
+        actorRef.tell("KILL" ,null);
+
+
         log.debug("Actor System Shutdown Starting...");
+        actorRef.tell(PoisonPill.getInstance(), null);
         actorSystem.terminate();
     }
 }

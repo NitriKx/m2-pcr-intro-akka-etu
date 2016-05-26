@@ -28,6 +28,17 @@ public class CribleActor extends UntypedActor {
 
     @Override
     public void onReceive(Object o) throws Exception {
+
+        if(o instanceof String) {
+            String msg = (String) o;
+            if(msg.equals("KILL")) {
+                cribleSuivant.tell("KILL", getSelf());
+                log.info("Fin du crible " + diviseur);
+                Thread.sleep(1000);
+                getContext().stop(getSelf());
+            }
+        }
+
         if(o instanceof Integer) {
             int nb = (Integer) o;
             if(nb%diviseur != 0) {
