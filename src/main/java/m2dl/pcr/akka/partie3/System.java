@@ -28,22 +28,28 @@ public class System {
         final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class, cryptage, erreurControle, recepteur), "Composer");
 
         String str = "Une chaine a crypter cas d'utilisation 1";
-        Message message = new Message(recepteur, null, null, str);
+        Message message = new Message(recepteur, str);
 
         // Cas d'utilisation 1
         log.info("CAS D'UTILISATION N° 1");
         cryptage.tell(message, null);
 
+        log.info("FIN CAS N° 1");
+        Thread.sleep(5000);
+
         // Cas d'utilisation 2
-        log.info("CAS D'UTILISATION N° 1");
+        log.info("CAS D'UTILISATION N° 2");
         message.setMessage("Une chaine a crypter cas d'utilisation 2");
         erreurControle.tell(message, null);
+        log.info("FIN CAS N° 2");
+        Thread.sleep(5000);
 
         // Cas d'utilisation 3
-        message.setCrypteur(cryptage);
-        message.setController(erreurControle);
+        log.info("CAS D'UTILISATION N° 3");
+        message.setRecepteur(null);
         message.setMessage("Une chaine a crypter cas d'utilisation 3");
         composerActor.tell(message, null);
+        log.info("FIN CAS N° 3");
 
         log.debug("Actor System Shutdown Starting...");
         actorSystem.terminate();

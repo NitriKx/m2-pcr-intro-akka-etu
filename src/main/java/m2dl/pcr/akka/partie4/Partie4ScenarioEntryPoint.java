@@ -28,7 +28,7 @@ public class Partie4ScenarioEntryPoint {
         final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class), "Composer");
 
         String str = "Une chaine a crypter cas d'utilisation 1";
-        Message message = new Message(recepteur, null, null, str);
+        Message message = new Message(recepteur, str);
 
         // Cas d'utilisation 1
         log.info("CAS D'UTILISATION N° 1");
@@ -42,8 +42,7 @@ public class Partie4ScenarioEntryPoint {
 
 
         // Cas d'utilisation 3
-        message.setCrypteur(cryptage.anchor());
-        message.setController(erreurControle.anchor());
+
         message.setMessage("Une chaine a crypter cas d'utilisation 3");
         composerActor.tell(message, null);
 

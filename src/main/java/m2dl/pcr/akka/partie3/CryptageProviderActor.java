@@ -20,7 +20,9 @@ public class CryptageProviderActor extends UntypedActor {
     public void onReceive(Object msg) throws Exception {
         if (msg instanceof Message) {
             Message msgMessage = (Message) msg;
-            msgMessage.getRecepteur().tell(StringUtils.crypte(msgMessage.getMessage()), getSelf());
+            String messageCrypte = StringUtils.crypte(((Message) msg).getMessage());
+            ((Message) msg).setMessage(messageCrypte);
+            msgMessage.getRecepteur().tell(msg, getSelf());
         }
     }
 }
