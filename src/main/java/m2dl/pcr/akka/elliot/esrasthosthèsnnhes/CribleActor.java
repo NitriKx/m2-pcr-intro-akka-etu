@@ -1,11 +1,10 @@
-package esrasthosthèsnnhes;
+package m2dl.pcr.akka.elliot.esrasthosthèsnnhes;
 
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import troisacteurs.SonHelloActor;
 
 import java.util.ArrayList;
 import java.util.List;

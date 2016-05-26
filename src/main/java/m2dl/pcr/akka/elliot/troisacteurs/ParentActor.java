@@ -1,4 +1,4 @@
-package troisacteurs;
+package m2dl.pcr.akka.elliot.troisacteurs;
 
 import akka.actor.ActorRef;
 import akka.actor.Props;
@@ -6,7 +6,6 @@ import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.Procedure;
-import m2dl.pcr.akka.helloworld2.NameActor;
 
 public class ParentActor extends UntypedActor {
     LoggingAdapter log = Logging.getLogger(getContext().system(), this);
