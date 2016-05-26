@@ -51,6 +51,7 @@ public class System {
         composerActor.tell(message, null);
         log.info("FIN CAS N° 3");
 
+        Thread.sleep(5000);
         log.debug("Actor System Shutdown Starting...");
         actorSystem.terminate();
     }

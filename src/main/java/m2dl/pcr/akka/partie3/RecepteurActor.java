@@ -20,7 +20,16 @@ public class RecepteurActor extends UntypedActor {
     @Override
     public void onReceive(Object msg) throws Exception {
         if (msg instanceof Message) {
-            log.info("RECEPTEUR = "+((Message) msg).getMessage());
+            Message message = (Message) msg;
+            String stringSansCtrl = StringUtils.verifieCtrl(message.getMessage());
+            String messageFinal;
+
+            if (stringSansCtrl == null) {
+                messageFinal = StringUtils.decrypte(message.getMessage());
+            } else {
+                messageFinal = StringUtils.decrypte(stringSansCtrl);
+            }
+            log.info("RECEPTEUR = "+messageFinal);
         }
     }
 }

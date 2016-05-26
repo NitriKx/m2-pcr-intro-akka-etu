@@ -28,7 +28,7 @@ public class ComposerActor extends UntypedActor {
         public void apply(Object msg) throws Exception {
             if (msg instanceof Message) {
                 ((Message) msg).setRecepteur(getSelf());
-                crypteur.tell(msg,getSelf());
+                crypteur.tell(msg, null);
                 getContext().become(controller,false);
             } else {
                 unhandled(msg);
@@ -39,8 +39,8 @@ public class ComposerActor extends UntypedActor {
     Procedure<Object> controller = new Procedure<Object>() {
         public void apply(Object msg) throws Exception {
             if (msg instanceof Message) {
-                erreur.tell(msg,getSelf());
                 ((Message) msg).setRecepteur(getSelf());
+                erreur.tell(msg, null);
                 getContext().become(envoyer, false);
             } else {
                 unhandled(msg);
@@ -51,7 +51,7 @@ public class ComposerActor extends UntypedActor {
     Procedure<Object> envoyer =  new Procedure<Object>() {
         public void apply(Object msg) throws Exception {
             if (msg instanceof Message) {
-                recepteur.tell(msg, getSelf());
+                recepteur.tell(msg, null);
                 getContext().unbecome();
             } else {
                 unhandled(msg);
