@@ -23,6 +23,7 @@ public class System {
         actorRef.tell("Sarkozy > Valls :)",null);
         actorRef.tell("49.3 is the new Colt",null);
         actorRef.tell("YA KELKUN ?",null);
+        actorRef.tell("pas de pétrole pour les trolls :/",null);
 
         Thread.sleep(1000);
 
