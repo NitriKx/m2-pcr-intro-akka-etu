@@ -9,7 +9,7 @@ import m2dl.pcr.akka.partie3.CryptageProviderActor;
 import m2dl.pcr.akka.partie3.ErreurControlProviderActor;
 
 /**
- * Created by benoit on 26/05/2016.
+ * Created by Benoît Sauvère on 26/05/2016.
  */
 public class ErreurControleProviderVMEntryPoint {
 

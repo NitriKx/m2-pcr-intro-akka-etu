@@ -12,10 +12,8 @@ public class Message {
     ActorRef controller;
     String message;
 
-    public Message(ActorRef recepteur, ActorRef crypteur, ActorRef controller, String message) {
+    public Message(ActorRef recepteur,  String message) {
         this.recepteur = recepteur;
-        this.crypteur = crypteur;
-        this.controller = controller;
         this.message = message;
     }
 
@@ -27,21 +25,6 @@ public class Message {
         this.recepteur = recepteur;
     }
 
-    public ActorRef getCrypteur() {
-        return crypteur;
-    }
-
-    public void setCrypteur(ActorRef crypteur) {
-        this.crypteur = crypteur;
-    }
-
-    public ActorRef getController() {
-        return controller;
-    }
-
-    public void setController(ActorRef controller) {
-        this.controller = controller;
-    }
 
     public String getMessage() {
         return message;

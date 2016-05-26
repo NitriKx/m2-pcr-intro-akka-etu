@@ -22,12 +22,9 @@ public class ErreurControlProviderActor extends UntypedActor {
     public void onReceive(Object msg) throws Exception {
         if (msg instanceof Message) {
             Message message = (Message) msg;
-            String messageSansCtrl = StringUtils.verifieCtrl(message.getMessage());
-            if (messageSansCtrl != null) {
-                message.getRecepteur().tell(msg, getSelf());
-            } else {
-                log.error("Le message ne contient pas de ctrl");
-            }
+            String messageSansCtrl = StringUtils.ajouteCtrl(message.getMessage());
+            message.setMessage(messageSansCtrl);
+            message.getRecepteur().tell(message, getSelf());
         } else {
             unhandled(msg);
         }

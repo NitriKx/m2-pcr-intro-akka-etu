@@ -19,22 +19,8 @@ public class RecepteurActor extends UntypedActor {
 
     @Override
     public void onReceive(Object msg) throws Exception {
-        if (msg instanceof String) {
-            Message message = (Message) msg;
-            // teste si le message est verifiable
-            String messageVerifie = StringUtils.verifieCtrl(message.getMessage());
-            String messageDecrypte;
-            if (messageVerifie == null) {
-                // un erreur controller provider a déjà enlevé le caractere
-                messageDecrypte = StringUtils.decrypte(message.getMessage());
-            } else {
-                messageDecrypte = StringUtils.decrypte(messageVerifie);
-            }
-            if (messageDecrypte != null) {
-                log.info("Message reçu : " + messageDecrypte);
-            } else {
-                log.error("Le message ne contient pas de ctrl");
-            }
+        if (msg instanceof Message) {
+            log.info("RECEPTEUR = "+((Message) msg).getMessage());
         }
     }
 }

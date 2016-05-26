@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory;
 import m2dl.pcr.akka.partie3.CryptageProviderActor;
 
 /**
- * Created by benoit on 26/05/2016.
+ * Created by Benoît Sauvère on 26/05/2016.
  */
 public class CryptageProviderVMEntryPoint {
 
@@ -17,6 +17,6 @@ public class CryptageProviderVMEntryPoint {
         Config config = ConfigFactory.load();
         final ActorSystem actorSystem = ActorSystem.create("cryptage-system", config.getConfig("cryptoservice").withFallback(config));
 
-        final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class), "cryptage");
+        final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class), "crypto");
     }
 }
