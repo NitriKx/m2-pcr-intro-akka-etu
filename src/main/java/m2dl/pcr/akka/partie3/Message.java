@@ -7,20 +7,40 @@ import akka.actor.ActorRef;
  */
 public class Message {
 
-    ActorRef actorRef;
+    ActorRef recepteur;
+    ActorRef crypteur;
+    ActorRef controller;
     String message;
 
-    public Message(ActorRef actorRef, String message) {
-        this.actorRef = actorRef;
+    public Message(ActorRef recepteur, ActorRef crypteur, ActorRef controller, String message) {
+        this.recepteur = recepteur;
+        this.crypteur = crypteur;
+        this.controller = controller;
         this.message = message;
     }
 
-    public ActorRef getActorRef() {
-        return actorRef;
+    public ActorRef getRecepteur() {
+        return recepteur;
     }
 
-    public void setActorRef(ActorRef actorRef) {
-        this.actorRef = actorRef;
+    public void setRecepteur(ActorRef recepteur) {
+        this.recepteur = recepteur;
+    }
+
+    public ActorRef getCrypteur() {
+        return crypteur;
+    }
+
+    public void setCrypteur(ActorRef crypteur) {
+        this.crypteur = crypteur;
+    }
+
+    public ActorRef getController() {
+        return controller;
+    }
+
+    public void setController(ActorRef controller) {
+        this.controller = controller;
     }
 
     public String getMessage() {

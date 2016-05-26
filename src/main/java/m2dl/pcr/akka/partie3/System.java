@@ -29,7 +29,7 @@ public class System {
 
 
         String str = "Une chaine a crypter";
-        Message message = new Message(recepteur, str);
+        Message message = new Message(recepteur, null, null, str);
 
         // Cas d'utilisation 1
         log.info("CAS D'UTILISATION N° 1");
@@ -42,7 +42,9 @@ public class System {
 
 
         // Cas d'utilisation 3
-        message.setActorRef(erreurControle);
+        message.setCrypteur(cryptage);
+        message.setController(erreurControle);
+        composerActor.tell(message, null);
 
         log.debug("Actor System Shutdown Starting...");
         actorSystem.terminate();
