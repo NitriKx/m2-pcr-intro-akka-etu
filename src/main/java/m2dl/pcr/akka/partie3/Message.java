@@ -2,15 +2,20 @@ package m2dl.pcr.akka.partie3;
 
 import akka.actor.ActorRef;
 
+import java.io.Serializable;
+
 /**
  * Created by julien on 26/05/16.
  */
-public class Message {
+public class Message implements Serializable {
 
     ActorRef recepteur;
-    ActorRef crypteur;
-    ActorRef controller;
     String message;
+
+    public Message() {
+        recepteur = null;
+        message = null;
+    }
 
     public Message(ActorRef recepteur,  String message) {
         this.recepteur = recepteur;

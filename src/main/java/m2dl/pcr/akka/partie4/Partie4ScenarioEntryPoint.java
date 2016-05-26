@@ -27,11 +27,11 @@ public class Partie4ScenarioEntryPoint {
 
         Thread.sleep(5000);
 
-        final ActorRef cryptage = Await.result(actorSystem.actorSelection("akka.tcp://app@127.0.0.1:9876/crypto").resolveOne(Timeout.apply(1, TimeUnit.SECONDS)), Duration.apply(1, TimeUnit.SECONDS));
-        final ActorRef erreurControle = Await.result(actorSystem.actorSelection("akka.tcp://app@127.0.0.1:9877/erreurcontrole").resolveOne(Timeout.apply(1, TimeUnit.SECONDS)), Duration.apply(1, TimeUnit.SECONDS));
+        final ActorRef cryptage = Await.result(actorSystem.actorSelection("akka.tcp://cryptage-system@127.0.0.1:9876/user/crypto").resolveOne(Timeout.apply(1, TimeUnit.SECONDS)), Duration.apply(1, TimeUnit.SECONDS));
+        final ActorRef erreurControle = Await.result(actorSystem.actorSelection("akka.tcp://erreurservice-system@127.0.0.1:9877/user/erreurcontrole").resolveOne(Timeout.apply(1, TimeUnit.SECONDS)), Duration.apply(1, TimeUnit.SECONDS));
 
         final ActorRef recepteur = actorSystem.actorOf(Props.create(RecepteurActor.class), "Recepteur");
-        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class), "Composer");
+        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class, cryptage, erreurControle, recepteur), "Composer");
 
         String str = "Une chaine a crypter cas d'utilisation 1";
         Message message = new Message(recepteur, str);
@@ -40,16 +40,24 @@ public class Partie4ScenarioEntryPoint {
         log.info("CAS D'UTILISATION N° 1");
         cryptage.tell(message, null);
 
+        log.info("FIN CAS N° 1");
+        Thread.sleep(5000);
 
         // Cas d'utilisation 2
-        log.info("CAS D'UTILISATION N° 1");
+        log.info("CAS D'UTILISATION N° 2");
         message.setMessage("Une chaine a crypter cas d'utilisation 2");
         erreurControle.tell(message, null);
-
+        log.info("FIN CAS N° 2");
+        Thread.sleep(5000);
 
         // Cas d'utilisation 3
+        log.info("CAS D'UTILISATION N° 3");
+        message.setRecepteur(null);
         message.setMessage("Une chaine a crypter cas d'utilisation 3");
         composerActor.tell(message, null);
+        log.info("FIN CAS N° 3");
+
+        Thread.sleep(5000);
 
         log.debug("Actor System Shutdown Starting...");
         actorSystem.terminate();
