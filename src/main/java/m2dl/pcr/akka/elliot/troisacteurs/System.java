@@ -1,4 +1,4 @@
-package troisacteurs;
+package m2dl.pcr.akka.elliot.troisacteurs;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
