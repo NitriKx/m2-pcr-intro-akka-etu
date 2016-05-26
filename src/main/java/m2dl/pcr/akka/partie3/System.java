@@ -25,8 +25,7 @@ public class System {
         final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class), "Cryptage");
         final ActorRef erreurControle = actorSystem.actorOf(Props.create(ErreurControlProviderActor.class), "ErreurControle");
         final ActorRef recepteur = actorSystem.actorOf(Props.create(RecepteurActor.class), "Recepteur");
-        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class), "Composer");
-
+        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class, cryptage, erreurControle), "Composer");
 
         String str = "Une chaine a crypter cas d'utilisation 1";
         Message message = new Message(recepteur, null, null, str);
