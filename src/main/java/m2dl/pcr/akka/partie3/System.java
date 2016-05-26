@@ -25,7 +25,7 @@ public class System {
         final ActorRef cryptage = actorSystem.actorOf(Props.create(CryptageProviderActor.class), "Cryptage");
         final ActorRef erreurControle = actorSystem.actorOf(Props.create(ErreurControlProviderActor.class), "ErreurControle");
         final ActorRef recepteur = actorSystem.actorOf(Props.create(RecepteurActor.class), "Recepteur");
-        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class, cryptage, erreurControle), "Composer");
+        final ActorRef composerActor = actorSystem.actorOf(Props.create(ComposerActor.class, cryptage, erreurControle, recepteur), "Composer");
 
         String str = "Une chaine a crypter cas d'utilisation 1";
         Message message = new Message(recepteur, null, null, str);
@@ -34,12 +34,10 @@ public class System {
         log.info("CAS D'UTILISATION N° 1");
         cryptage.tell(message, null);
 
-
         // Cas d'utilisation 2
         log.info("CAS D'UTILISATION N° 1");
         message.setMessage("Une chaine a crypter cas d'utilisation 2");
         erreurControle.tell(message, null);
-
 
         // Cas d'utilisation 3
         message.setCrypteur(cryptage);

@@ -18,7 +18,6 @@ public class CryptageProviderActor extends UntypedActor {
 
     @Override
     public void onReceive(Object msg) throws Exception {
-        // Cas d'utilisation 1
         if (msg instanceof Message) {
             Message msgMessage = (Message) msg;
             msgMessage.getRecepteur().tell(StringUtils.crypte(msgMessage.getMessage()), getSelf());
